@@ -1,7 +1,11 @@
 <?xml version="1.0"?>
 
 <config>
+
+    <preference for="SamSteele\SpamBlocker\Api\CreationTimerInterface" type="SamSteele\SpamBlocker\Model\CreationTimer" />
+
     <type name="Magento\Customer\Model\AccountManagement">
         <plugin name="spamBlockerCreateAccount" type="\SamSteele\SpamBlocker\Plugin\AccountManagementPlugin" sortOrder="1" disabled="false" />
     </type>
+
 </config>
