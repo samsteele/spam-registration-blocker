@@ -47,10 +47,6 @@ class CreationTimer extends \Magento\Framework\Model\AbstractModel implements Cr
      */
     public function getAccountCreationTime()
     {
-        // TODO: Dummy setters - move to appropriate plugins
-        $this->setStartTime();
-        $this->setEndTime();
-
         // Calculate time between hitting account creation form and submitting it
         $this->_creationTime = $this->_endTime - $this->_startTime;
 
@@ -63,6 +59,11 @@ class CreationTimer extends \Magento\Framework\Model\AbstractModel implements Cr
     public function validateAccountCreationTime()
     {
         // TODO: Dummy threshold value - get from store config
+
+        echo "start = " . $this->_startTime;
+        echo "end = " . $this->_endTime;
+        die();
+
         if ($this->getAccountCreationTime() < 20) {
             return true;
         } else {

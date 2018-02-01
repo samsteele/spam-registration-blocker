@@ -28,6 +28,7 @@ class AccountManagementPlugin
         $redirectUrl = ''
     ) {
         // Compare account creation time against value set in config
+        $this->_creationTimer->setEndTime();
         $valid = $this->_creationTimer->validateAccountCreationTime();
 
         if ($valid) {

@@ -4,6 +4,10 @@
 
     <preference for="SamSteele\SpamBlocker\Api\CreationTimerInterface" type="SamSteele\SpamBlocker\Model\CreationTimer" />
 
+    <type name="Magento\Customer\Controller\Account\Create">
+        <plugin name="spamBlockerRegistrationForm" type="\SamSteele\SpamBlocker\Plugin\CreatePlugin" sortOrder="1" disabled="false" />
+    </type>
+
     <type name="Magento\Customer\Model\AccountManagement">
         <plugin name="spamBlockerCreateAccount" type="\SamSteele\SpamBlocker\Plugin\AccountManagementPlugin" sortOrder="1" disabled="false" />
     </type>
