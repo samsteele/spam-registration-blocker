@@ -10,8 +10,10 @@ class CreationTimer extends \Magento\Framework\Model\AbstractModel implements Cr
     protected $_startTime;
     protected $_endTime;
     protected $_creationTime;
+    protected $_dateTime;
 
     public function __construct(
+        \Magento\Framework\Stdlib\DateTime\DateTime $dateTime,
         \Magento\Framework\Model\Context $context,
         \Magento\Framework\Registry $registry,
         \Magento\Framework\Model\ResourceModel\AbstractResource $resource = null,
@@ -19,7 +21,7 @@ class CreationTimer extends \Magento\Framework\Model\AbstractModel implements Cr
         array $data = []
     ) {
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
-
+        $this->_dateTime = $dateTime;
     }
 
     /**
@@ -27,9 +29,8 @@ class CreationTimer extends \Magento\Framework\Model\AbstractModel implements Cr
      */
     public function setStartTime()
     {
-        // TODO: Dummy value - get time from Magento
         // Set start time - called after account create form is hit
-        $this->_startTime = 20;
+        $this->_startTime = $this->_dateTime->timestamp();
     }
 
     /**
@@ -37,9 +38,8 @@ class CreationTimer extends \Magento\Framework\Model\AbstractModel implements Cr
      */
     public function setEndTime()
     {
-        // TODO: Dummy value - get time from Magento
         // Set end time - called before account creation is carried out
-        $this->_endTime = 30;
+        $this->_endTime = $this->_dateTime->timestamp();
     }
 
     /**

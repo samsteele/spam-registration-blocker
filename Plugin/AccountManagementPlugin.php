@@ -12,7 +12,6 @@ class AccountManagementPlugin
         $this->_creationTimer = $creationTimer;
     }
 
-
     /**
      * @param \Magento\Customer\Model\AccountManagement $subject
      * @param callable $proceed
