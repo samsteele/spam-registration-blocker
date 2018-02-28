@@ -2,7 +2,7 @@
   "name": "samsteele/spam-registration-blocker",
   "description": "Plugin to block automated customer registration spam",
   "require": {
-    "php": "*",
+    "php": "7.*",
     "magento/magento-composer-installer": "*"
   },
   "type": "magento2-module",
