@@ -64,11 +64,7 @@ class CreationTimer extends \Magento\Framework\Model\AbstractModel implements Cr
     public function validateAccountCreationTime()
     {
         // TODO: Dummy threshold value, get from store config
-        if ($this->getAccountCreationTime() > 2) {
-            return true;
-        } else {
-            return false;
-        }
+        return $this->getAccountCreationTime() > 99;
     }
 
 }

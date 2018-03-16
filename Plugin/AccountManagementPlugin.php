@@ -29,14 +29,16 @@ class AccountManagementPlugin
     ) {
         $this->_creationTimer->setEndTime();
 
+        // TODO: Check if module nad feature are enabled in config
+
         // Compare account creation time against value set in config
-        if ($this->_creationTimer->validateAccountCreationTime()) {
-            // Continue with registration as normal
-            return $proceed($customer, $password, $redirectUrl);
-        } else {
+        if (!$this->_creationTimer->validateAccountCreationTime()) {
             // TODO: Handle blocked registrations more elegantly
             // Block account registration
             die("BLOCKED AS SPAM");
         }
+
+        // Continue with registration as normal
+        return $proceed($customer, $password, $redirectUrl);
     }
 }
