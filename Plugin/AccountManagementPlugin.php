@@ -29,7 +29,7 @@ class AccountManagementPlugin
     ) {
         $this->_creationTimer->setEndTime();
 
-        // TODO: Check if module nad feature are enabled in config
+        // TODO: Check if module and feature are enabled in config
 
         // Compare account creation time against value set in config
         if (!$this->_creationTimer->validateAccountCreationTime()) {

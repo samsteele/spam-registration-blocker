@@ -6,7 +6,7 @@
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
                         <resource id="Magento_Config::config">
-                            <resource id="SamSteele_SpamBlocker::config_spam_blocker" title="Spam Blocker" sortOrder="50" />
+                            <resource id="SamSteele_SpamBlocker::config_spam_blocker" title="Spam Blocker" sortOrder="9001" />
                         </resource>
                     </resource>
                 </resource>

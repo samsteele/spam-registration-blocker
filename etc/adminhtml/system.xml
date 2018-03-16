@@ -5,6 +5,7 @@
             <label>Spam Blocker</label>
             <tab>customer</tab>
             <resource>SamSteele_SpamBlocker::config_spam_blocker</resource>
+            
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
                 <attribute type="expanded">1</attribute>
@@ -17,6 +18,7 @@
                     <comment>This text will displayed to the user when a registration is blocked.</comment>
                 </field>
             </group>
+
             <group id="registration_timer" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Registration Timer</label>
                     <field id="enable_registration_timer" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -28,6 +30,7 @@
                         <validate>validate-number</validate>
                     </field>
             </group>
+
         </section>
     </system>
 </config>
