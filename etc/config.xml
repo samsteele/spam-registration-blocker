@@ -7,7 +7,7 @@
                 <block_message>There was an error processing your request.</block_message>
             </general>
             <registration_timer>
-                <min_reg_time>5</min_reg_time>
+                <min_reg_time>1</min_reg_time>
             </registration_timer>
         </spamblocker>
     </default>

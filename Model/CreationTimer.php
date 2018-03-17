@@ -6,13 +6,12 @@ use SamSteele\SpamBlocker\Api\CreationTimerInterface;
 
 class CreationTimer extends \Magento\Framework\Model\AbstractModel implements CreationTimerInterface
 {
-    protected $_startTime;
-    protected $_endTime;
-    protected $_creationTime;
+    protected $_helper;
     protected $_dateTime;
     protected $_customerSession;
 
     public function __construct(
+        \SamSteele\SpamBlocker\Helper\Data $helper,
         \Magento\Framework\Stdlib\DateTime\DateTime $dateTime,
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Framework\Model\Context $context,
@@ -22,6 +21,7 @@ class CreationTimer extends \Magento\Framework\Model\AbstractModel implements Cr
         array $data = []
     ) {
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
+        $this->_helper = $helper;
         $this->_dateTime = $dateTime;
         $this->_customerSession = $customerSession;
     }
@@ -31,7 +31,7 @@ class CreationTimer extends \Magento\Framework\Model\AbstractModel implements Cr
      */
     public function setStartTime()
     {
-        // Set start time - called after account create form is hit
+        // Called after account create form is hit
         $this->_customerSession->setRegistrationStartTime($this->_dateTime->timestamp());
     }
 
@@ -40,7 +40,7 @@ class CreationTimer extends \Magento\Framework\Model\AbstractModel implements Cr
      */
     public function setEndTime()
     {
-        // Set end time - called before account creation is carried out
+        // Called before account creation is executed
         $this->_customerSession->setRegistrationEndTime($this->_dateTime->timestamp());
     }
 
@@ -52,10 +52,7 @@ class CreationTimer extends \Magento\Framework\Model\AbstractModel implements Cr
         $registrationStartTime = $this->_customerSession->getRegistrationStartTime();
         $registrationEndTime = $this->_customerSession->getRegistrationEndTime();
 
-        // Calculate time between hitting account creation form and submitting it
-        $this->_creationTime = $registrationEndTime - $registrationStartTime;
-
-        return $this->_creationTime;
+        return $registrationEndTime - $registrationStartTime;
     }
 
     /**
@@ -63,8 +60,13 @@ class CreationTimer extends \Magento\Framework\Model\AbstractModel implements Cr
      */
     public function validateAccountCreationTime()
     {
-        // TODO: Dummy threshold value, get from store config
-        return $this->getAccountCreationTime() > 99;
-    }
+        if ($this->_helper->isRegistrationTimerEnabled()) {
 
+            $minRegistrationTime = $this->_helper->getMinRegistrationTime();
+            return $this->getAccountCreationTime() > $minRegistrationTime;
+
+        } else {
+            return true;
+        }
+    }
 }

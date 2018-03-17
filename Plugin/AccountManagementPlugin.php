@@ -4,11 +4,14 @@ namespace SamSteele\SpamBlocker\Plugin;
 
 class AccountManagementPlugin
 {
+    protected $_helper;
     protected $_creationTimer;
 
     public function __construct(
+        \SamSteele\SpamBlocker\Helper\Data $helper,
         \SamSteele\SpamBlocker\Api\CreationTimerInterface $creationTimer
     ) {
+        $this->_helper = $helper;
         $this->_creationTimer = $creationTimer;
     }
 
@@ -29,13 +32,12 @@ class AccountManagementPlugin
     ) {
         $this->_creationTimer->setEndTime();
 
-        // TODO: Check if module and feature are enabled in config
-
-        // Compare account creation time against value set in config
-        if (!$this->_creationTimer->validateAccountCreationTime()) {
-            // TODO: Handle blocked registrations more elegantly
-            // Block account registration
-            die("BLOCKED AS SPAM");
+        if ($this->_helper->isSpamBlockerEnabled()) {
+            if (!$this->_creationTimer->validateAccountCreationTime()) {
+                // TODO: Handle blocked registrations more elegantly
+                // Block account registration
+                die($this->_helper->getBlockMessage());
+            }
         }
 
         // Continue with registration as normal

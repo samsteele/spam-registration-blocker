@@ -5,7 +5,7 @@
             <label>Spam Blocker</label>
             <tab>customer</tab>
             <resource>SamSteele_SpamBlocker::config_spam_blocker</resource>
-            
+
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General</label>
                 <attribute type="expanded">1</attribute>
@@ -15,20 +15,21 @@
                 </field>
                 <field id="block_message" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Block Text</label>
-                    <comment>This text will displayed to the user when a registration is blocked.</comment>
+                    <comment>This text will be displayed to the user when a registration is blocked.</comment>
                 </field>
             </group>
 
             <group id="registration_timer" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Registration Timer</label>
-                    <field id="enable_registration_timer" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                        <label>Enable Feature</label>
-                        <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    </field>
-                    <field id="min_reg_time" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
-                        <label>Minimum Registration Time</label>
-                        <validate>validate-number</validate>
-                    </field>
+                <field id="enable_registration_timer" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Feature</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="min_registration_time" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Minimum Registration Time</label>
+                    <validate>validate-number</validate>
+                    <comment>In seconds.</comment>
+                </field>
             </group>
 
         </section>
