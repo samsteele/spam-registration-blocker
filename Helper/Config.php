@@ -4,7 +4,7 @@ namespace SamSteele\SpamBlocker\Helper;
 
 use Magento\Framework\App\Helper\AbstractHelper;
 
-class Data extends AbstractHelper
+class Config extends AbstractHelper
 {
 
     protected $_scopeConfig;

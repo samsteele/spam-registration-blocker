@@ -11,7 +11,7 @@ class CreationTimer extends \Magento\Framework\Model\AbstractModel implements Cr
     protected $_customerSession;
 
     public function __construct(
-        \SamSteele\SpamBlocker\Helper\Data $helper,
+        \SamSteele\SpamBlocker\Helper\Config $helper,
         \Magento\Framework\Stdlib\DateTime\DateTime $dateTime,
         \Magento\Customer\Model\Session $customerSession,
         \Magento\Framework\Model\Context $context,

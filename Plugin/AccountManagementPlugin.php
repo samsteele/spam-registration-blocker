@@ -8,7 +8,7 @@ class AccountManagementPlugin
     protected $_creationTimer;
 
     public function __construct(
-        \SamSteele\SpamBlocker\Helper\Data $helper,
+        \SamSteele\SpamBlocker\Helper\Config $helper,
         \SamSteele\SpamBlocker\Api\CreationTimerInterface $creationTimer
     ) {
         $this->_helper = $helper;
