@@ -32,6 +32,17 @@
                 </field>
             </group>
 
+            <group id="honeypot_field" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Honeypot Fields</label>
+                <field id="honeypot_field_name" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Honeypot Field Name</label>
+                    <comment>Don't be too obvious. Smart bots may avoid a field called "honeypot".</comment>
+                </field>
+                <field id="customer_account_create" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Use Account Registration Honeypot</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
         </section>
     </system>
 </config>

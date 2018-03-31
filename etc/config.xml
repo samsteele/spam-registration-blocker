@@ -9,6 +9,9 @@
             <registration_timer>
                 <min_registration_time>1</min_registration_time>
             </registration_timer>
+            <honeypot_field>
+                <honeypot_field_name>hptfld</honeypot_field_name>
+            </honeypot_field>
         </spamblocker>
     </default>
 </config>

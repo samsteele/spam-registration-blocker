@@ -65,8 +65,8 @@ class CreationTimer extends \Magento\Framework\Model\AbstractModel implements Cr
             $minRegistrationTime = $this->_helper->getMinRegistrationTime();
             return $this->getAccountCreationTime() > $minRegistrationTime;
 
-        } else {
-            return true;
         }
+
+        return true;
     }
 }
