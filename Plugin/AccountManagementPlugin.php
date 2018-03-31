@@ -6,13 +6,19 @@ class AccountManagementPlugin
 {
     protected $_helper;
     protected $_creationTimer;
+    protected $_messageManager;
+    protected $_escaper;
 
     public function __construct(
         \SamSteele\SpamBlocker\Helper\Config $helper,
-        \SamSteele\SpamBlocker\Api\CreationTimerInterface $creationTimer
+        \SamSteele\SpamBlocker\Api\CreationTimerInterface $creationTimer,
+        \Magento\Framework\Message\ManagerInterface $messageManager,
+        \Magento\Framework\Escaper $_escaper
     ) {
         $this->_helper = $helper;
         $this->_creationTimer = $creationTimer;
+        $this->_messageManager = $messageManager;
+        $this->_escaper = $_escaper;
     }
 
     /**
@@ -34,9 +40,10 @@ class AccountManagementPlugin
 
         if ($this->_helper->isSpamBlockerEnabled()) {
             if (!$this->_creationTimer->validateAccountCreationTime()) {
-                // TODO: Handle blocked registrations more elegantly
-                // Block account registration
-                die($this->_helper->getBlockMessage());
+
+                $this->_messageManager->addError($this->_escaper->escapeHtml($this->_helper->getBlockMessage()));
+                header('Location: ' . '/');
+                exit();
             }
         }
 

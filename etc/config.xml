@@ -4,10 +4,10 @@
     <default>
         <spamblocker>
             <general>
-                <block_message>There was an error processing your request.</block_message>
+                <block_message>There was an error creating your account.</block_message>
             </general>
             <registration_timer>
-                <min_registration_time>1</min_reg_time>
+                <min_registration_time>1</min_registration_time>
             </registration_timer>
         </spamblocker>
     </default>
