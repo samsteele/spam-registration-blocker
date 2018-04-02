@@ -12,4 +12,18 @@
         <plugin name="spamBlockerCreateAccount" type="\SamSteele\SpamBlocker\Plugin\AccountManagementPlugin" sortOrder="1" disabled="false" />
     </type>
 
+    <virtualType name="customLogger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="handlers"  xsi:type="array">
+                <item name="info" xsi:type="object">SamSteele\SpamBlocker\Handler\Spam</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <type name="SamSteele\SpamBlocker\Plugin\AccountManagementPlugin">
+        <arguments>
+            <argument name="logger" xsi:type="object">customLogger</argument>
+        </arguments>
+    </type>
+
 </config>
