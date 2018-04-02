@@ -6,7 +6,6 @@ use Magento\Framework\App\Helper\AbstractHelper;
 
 class Config extends AbstractHelper
 {
-
     protected $_scopeConfig;
     protected $_escaper;
 
