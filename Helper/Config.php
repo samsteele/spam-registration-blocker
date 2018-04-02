@@ -8,11 +8,14 @@ class Config extends AbstractHelper
 {
 
     protected $_scopeConfig;
+    protected $_escaper;
 
     public function __construct(
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
+        \Magento\Framework\Escaper $escaper
     ) {
         $this->_scopeConfig = $scopeConfig;
+        $this->_escaper = $escaper;
     }
 
     /**
@@ -28,7 +31,7 @@ class Config extends AbstractHelper
      */
     public function getBlockMessage()
     {
-        return $this->_scopeConfig->getValue('spamblocker/general/block_message');
+        return $this->_escaper->escapeHtml($this->_scopeConfig->getValue('spamblocker/general/block_message'));
     }
 
     /**
@@ -61,6 +64,6 @@ class Config extends AbstractHelper
      */
     public function getHoneyPotFieldName()
     {
-        return $this->_scopeConfig->getValue('spamblocker/honeypot_field/honeypot_field_name');
+        return $this->_escaper->escapeHtml($this->_scopeConfig->getValue('spamblocker/honeypot_field/honeypot_field_name'));
     }
 }

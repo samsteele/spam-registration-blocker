@@ -7,7 +7,6 @@ class AccountManagementPlugin
     protected $_helper;
     protected $_creationTimer;
     protected $_messageManager;
-    protected $_escaper;
     protected $_request;
     protected $_logger;
 
@@ -15,14 +14,12 @@ class AccountManagementPlugin
         \SamSteele\SpamBlocker\Helper\Config $helper,
         \SamSteele\SpamBlocker\Api\CreationTimerInterface $creationTimer,
         \Magento\Framework\Message\ManagerInterface $messageManager,
-        \Magento\Framework\Escaper $escaper,
         \Magento\Framework\App\Request\Http $request,
         \Psr\Log\LoggerInterface $logger
     ) {
         $this->_helper = $helper;
         $this->_creationTimer = $creationTimer;
         $this->_messageManager = $messageManager;
-        $this->_escaper = $escaper;
         $this->_request = $request;
         $this->_logger = $logger;
     }
@@ -69,7 +66,7 @@ class AccountManagementPlugin
         $this->_logger->info(implode(', ', (array_slice($this->_request->getParams(), 3, 6))));
 
         // Return to homepage with error message
-        $this->_messageManager->addError($this->_escaper->escapeHtml($this->_helper->getBlockMessage()));
+        $this->_messageManager->addError($this->_helper->getBlockMessage());
         header('Location: ' . '/');
         exit();
     }
