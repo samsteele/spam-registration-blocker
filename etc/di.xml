@@ -14,7 +14,7 @@
 
     <virtualType name="customLogger" type="Magento\Framework\Logger\Monolog">
         <arguments>
-            <argument name="handlers"  xsi:type="array">
+            <argument name="handlers" xsi:type="array">
                 <item name="info" xsi:type="object">SamSteele\SpamBlocker\Handler\Spam</item>
             </argument>
         </arguments>
