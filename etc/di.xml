@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 
-<config>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 
     <preference for="SamSteele\SpamBlocker\Api\CreationTimerInterface" type="SamSteele\SpamBlocker\Model\CreationTimer" />
 
